@@ -33,6 +33,10 @@ struct Jukebox {
         isplaying = !isPlaying;
     }
     
+    void repeat(){
+        isonrepeat = !isonrepeat;
+    }
+    
     void addgenre(Genre& add_genre){
         genre.push_back(add_genre);
         cout << add_genre << " added  to playlist.";
@@ -67,11 +71,11 @@ struct Jukebox {
     }
     void skip_to_next_track(){
         Genre* curr_genre = genres[curr_genre_idx];
-        Song* curr_song = songs[curr_song_idx];
+        Playlist* curr_playlist = playlists[curr_playlist_idx];
         if (curr_song_idx < songs.size() - 1){
             curr_song_idx++;
         }
-        else if (curr_playlist_idx < playlists.size() - 1){
+        else if (curr_playlist_idx < curr_genre.playlists.size() - 1){
             curr_playlist_idx++;
             curr_song_idx = 0;
         }
@@ -104,14 +108,17 @@ struct Jukebox {
         }
     }
     void skip_to_first_track_next_playlist(){
-        if (curr_playlist_idx < playlist.size() - 1){
+        Genre* curr_genre = genres[curr_genre_idx];
+        if (curr_playlist_idx < curr_genre.playlist.size() - 1){
             curr_playlist_idx++;
             curr_song_idx = 0;
         }
     }
     
             
-
+    Genre* rearrange_playlists(int curr_genre_idx, int curr_song_idx, int curr_playlist_idx){
+        
+        
                 
                 
         
