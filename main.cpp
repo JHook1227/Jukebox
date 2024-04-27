@@ -116,32 +116,20 @@ struct Jukebox {
         curr_song_idx = 0;
         curr_playlist_idx = 0;
     }
-            
-    void press_play(){
-        const Song& curr_song = get_curr_song();
-        cout << curr_song.title << " by " << curr_song.artist << " is playing. " << endl;
-        if (isonrepeat && curr_song_idx + 1 >= genres[curr_genre_idx].playlists[curr_playlist_idx].songs.size()){
-            press_play();
-        }
-        else if (curr_song_idx + 1 < genres[curr_genre_idx].playlists[curr_playlist_idx].songs.size()){
-              curr_song_idx++;
-              press_play();
+    void print_playlists() const {
+    cout << "Playlists in Jukebox:" << endl;
+    for (const Genre& genre : genres) {
+        cout << "Genre: " << genre.name << endl;
+        for (const Playlist& playlist : genre.playlists) {
+            cout << "  Playlist: " << playlist.name << endl;
+            for (const Song& song : playlist.songs) {
+                cout << "    Song: " << song.title << " by " << song.artist << endl;
             }
-        else if(curr_playlist_idx < genres[curr_genre_idx].playlists.size()){
-              skip_to_first_track_next_playlist();
-              press_play();
-        }
-        else{
-            restart_jukebox();
         }
     }
-                                               
-    const Song& get_curr_song() const {
-        const Genre& curr_genre = genres[curr_genre_idx];
-        const Playlist& curr_playlist = curr_genre.playlists[curr_playlist_idx];
-        const Song& curr_song = curr_playlist.songs[curr_song_idx];
-        return curr_song;
-    }
+}
+            
+
                                           
 };
 int main() {
@@ -160,7 +148,9 @@ Jukebox jukebox;
     playlist2.name = "Top Hits";
     playlist2.songs = {{"Shape of You", "Ed Sheeran"}, {"Blinding Lights", "The Weeknd"}};
     genre2.playlists.push_back(playlist2);
-    jukebox.press_play();
+    ;
+    jukebox.print_playlists();
+    
     return 0;
 }
      
