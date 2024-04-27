@@ -128,27 +128,52 @@ struct Jukebox {
         }
     }
 }
+    //void Jukebox::press_play() {
+    //const Song& curr_song = get_curr_song();
+    //cout << curr_song.title << " by " << curr_song.artist << " is playing. " << endl;
+
+    //if (isonrepeat) {
+        //press_play();
+    //} else {
+        //if (curr_song_idx + 1 < genres[curr_genre_idx].playlists[curr_playlist_idx].songs.size()) {
+            //curr_song_idx++;
+            //press_play();
+        //} else if (curr_playlist_idx + 1 < genres[curr_genre_idx].playlists.size()) {
+            //skip_to_first_track_next_playlist();
+            //press_play();
+        //} else {
+            //restart_jukebox();
+        //}
+    //}
+//}
             
 
                                           
 };
 int main() {
-Jukebox jukebox;
-
+    Jukebox jukebox;
     Genre genre1;
     genre1.name = "Rock";
-    Playlist playlist1;
-    playlist1.name = "Classic Rock";
-    playlist1.songs = {{"Stairway to Heaven", "Led Zeppelin"}, {"Bohemian Rhapsody", "Queen"}};
-    genre1.playlists.push_back(playlist1);
 
     Genre genre2;
     genre2.name = "Pop";
+
+    jukebox.genres.push_back(genre1);
+    jukebox.genres.push_back(genre2);
+
+    Playlist playlist1;
+    playlist1.name = "Classic Rock";
+    playlist1.songs.push_back({"Stairway to Heaven", "Led Zeppelin"});
+    playlist1.songs.push_back({"Bohemian Rhapsody", "Queen"});
+
     Playlist playlist2;
     playlist2.name = "Top Hits";
-    playlist2.songs = {{"Shape of You", "Ed Sheeran"}, {"Blinding Lights", "The Weeknd"}};
-    genre2.playlists.push_back(playlist2);
-    ;
+    playlist2.songs.push_back({"Shape of You", "Ed Sheeran"});
+    playlist2.songs.push_back({"Blinding Lights", "The Weeknd"});
+
+    jukebox.genres[0].playlists.push_back(playlist1);
+    jukebox.genres[1].playlists.push_back(playlist2);
+    
     jukebox.print_playlists();
     
     return 0;
