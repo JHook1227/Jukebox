@@ -126,7 +126,7 @@ struct Jukebox {
         curr_playlist_idx = 0;
     }
     void print_playlists() const {
-    cout << "Playlists in Jukebox:" << endl;
+    cout << "Jukebox:" << endl;
     for (const Genre& genre : genres) {
         cout << "Genre: " << genre.name << endl;
         for (const Playlist& playlist : genre.playlists) {
@@ -166,7 +166,7 @@ int main() {
     
     Jukebox jukebox;
     int choice;
-    int exit = 1;
+    
     
     do {
         cout << "1. Play/Pause" << endl;
@@ -183,9 +183,7 @@ int main() {
         cout << "12. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
-        if (exit == 0){
-            break;
-        }
+        
         
         switch (choice) {
             case 1:
@@ -245,6 +243,8 @@ int main() {
                                     cout << "Playlist created: " << playlist_name << endl;
                                     break;
                                 }
+                                else{
+                                    cout << "Invalid genre name, please add genre." << endl;
                             }
                         }
                 break;
@@ -281,7 +281,7 @@ int main() {
             case 12:
                 cout << "Exiting" << endl;
                 jukebox.print_playlists();
-                exit = 0;
+                return 0;
                 break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
