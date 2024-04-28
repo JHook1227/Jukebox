@@ -151,6 +151,7 @@ struct Jukebox {
                                           
 };
 int main() {
+    
     Jukebox jukebox;
     Genre genre1;
     genre1.name = "Rock";
