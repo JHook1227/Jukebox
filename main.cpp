@@ -180,7 +180,8 @@ int main() {
         cout << "9. Create Genre" << endl;
         cout << "10. Create Playlist" << endl;
         cout << "11. Add song to Playlist" << endl;
-        cout << "12. Exit" << endl;
+        cout << "12. Print Jukebox contents" << endl;
+        cout << "13. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
         
@@ -247,6 +248,7 @@ int main() {
                                     cout << "Invalid genre name, please add genre." << endl;
                             }
                         }
+                        }
                 break;
             case 11: 
                 {
@@ -272,17 +274,32 @@ int main() {
                                     cout << song_title << " by " << song_artist << " added to " << playlist_name << " in " << genre_name << endl;
                                     break;
                                 }
+                                else{
+                                    cout << "Error playlist is not in the jukebox, please add it." << endl;
                             }
                             break;
                         }
                     }
+                    else{
+                        cout << "Error genre is not in the jukebox, please add it." << endl;
+                }
+                    }
                 }
                     break;
+                    
             case 12:
-                cout << "Exiting" << endl;
-                jukebox.print_playlists();
-                return 0;
+                {
+                    jukebox.print_playlists();
+                }
                 break;
+            case 13:
+                {
+                    
+                cout << "Exiting" << endl;
+                return 0;
+                }
+                break;
+                
             default:
                 cout << "Invalid choice. Please try again." << endl;
                 break;
