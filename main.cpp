@@ -5,7 +5,7 @@
 
 using namespace std;
 
-struct Song { //song struct
+struct Song { 
     string title;
     string artist;
 };
@@ -244,10 +244,10 @@ int main() {
                                     cout << "Playlist created: " << playlist_name << endl;
                                     break;
                                 }
-                                else{
-                                    cout << "Invalid genre name, please add genre." << endl;
+                             
+                                    
                             }
-                        }
+                        
                         }
                 break;
             case 11: 
